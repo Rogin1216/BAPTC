@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Dashboard"></activity>
+        <activity
+            android:name=".ui.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Common.LoginSignup.ForgotpasswordSuccessMessage" />
         <activity android:name=".Common.LoginSignup.SetNewPassword" />
         <activity android:name=".Common.LoginSignup.ForgotPassword" />
@@ -19,8 +22,15 @@
         <activity android:name=".Common.LoginSignup.SignUp" />
         <activity android:name=".Common.LoginSignup.Login" />
         <activity android:name=".Common.LoginSignup.StartUpScreen" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Common.SplashScreen">
+<!--        <activity android:name=".Common.SplashScreen">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+        <activity android:name=".Sample">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

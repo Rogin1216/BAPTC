@@ -11,17 +11,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.baptc.Dashboard;
 import com.example.baptc.Databases.SessionManager;
-import com.example.baptc.MainActivity;
 import com.example.baptc.R;
+import com.example.baptc.ui.HomeActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -111,21 +109,28 @@ public class Login extends AppCompatActivity {
                         //Get users data from database
                         String _fullname = dataSnapshot.child(_completePhoneNo).child("fullname").getValue(String.class);
                         String _email = dataSnapshot.child(_completePhoneNo).child("email").getValue(String.class);
-                        String _username = dataSnapshot.child(_completePhoneNo).child("username").getValue(String.class);
+                        String _idnum = dataSnapshot.child(_completePhoneNo).child("idnum").getValue(String.class);
                         String _phoneNo = dataSnapshot.child(_completePhoneNo).child("phoneNo").getValue(String.class);
                         String _dateOfBirth = dataSnapshot.child(_completePhoneNo).child("date").getValue(String.class);
                         String _password = dataSnapshot.child(_completePhoneNo).child("password").getValue(String.class);
                         String _gender = dataSnapshot.child(_completePhoneNo).child("gender").getValue(String.class);
 
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        intent.putExtra("fullname", _fullname);
+                        intent.putExtra("email", _email);
+                        intent.putExtra("idnum", _idnum);
+                        intent.putExtra("date", _dateOfBirth);
+                        intent.putExtra("phoneNo", _phoneNo);
+
                         //Create Session
                         SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_USERSESSION);
-                        sessionManager.createLoginSession(_fullname, _email, _phoneNo, _dateOfBirth, _password, _gender, _username);
+                        sessionManager.createLoginSession(_fullname, _email, _phoneNo, _dateOfBirth, _password, _gender, _idnum);
 
-                        startActivity(new Intent(getApplicationContext(), Dashboard.class));
-
+                        startActivity(intent);
 
                         progressbar.setVisibility(View.GONE);
                         Toast.makeText(Login.this, "Welcome", Toast.LENGTH_SHORT).show();
+
                     } else {
                         progressbar.setVisibility(View.GONE);
                         Toast.makeText(Login.this, "Password does not match", Toast.LENGTH_SHORT).show();

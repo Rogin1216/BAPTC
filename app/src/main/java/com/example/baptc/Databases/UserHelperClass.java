@@ -2,13 +2,13 @@ package com.example.baptc.Databases;
 
 public class UserHelperClass {
 
-    String fullname, username, email, phoneNo, password, date, gender;
+    String idnum, fullname, email, phoneNo, password, date, gender;
 
     public UserHelperClass(){}
 
-    public UserHelperClass(String fullname, String username, String email, String phoneNo, String password, String date, String gender) {
+    public UserHelperClass(String idnum, String fullname, String email, String phoneNo, String password, String date, String gender) {
+        this.idnum = idnum;
         this.fullname = fullname;
-        this.username = username;
         this.email = email;
         this.phoneNo = phoneNo;
         this.password = password;
@@ -24,12 +24,12 @@ public class UserHelperClass {
         this.fullname = fullname;
     }
 
-    public String getUsername() {
-        return username;
+    public String getIdnum() {
+        return idnum;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setIdnum(String idnum) {
+        this.idnum = idnum;
     }
 
     public String getEmail() {

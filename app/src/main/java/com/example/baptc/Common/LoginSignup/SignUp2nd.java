@@ -53,9 +53,9 @@ public class SignUp2nd extends AppCompatActivity {
         }
 
         //Get all values passed from previous screens
+        String _idnum = getIntent().getStringExtra("idnum");
         String _fullname = getIntent().getStringExtra("fullname");
         String _email = getIntent().getStringExtra("email");
-        String _username = getIntent().getStringExtra("username");
         String _password = getIntent().getStringExtra("password");
 
         selectedGender = findViewById(radioGroup.getCheckedRadioButtonId());
@@ -70,9 +70,9 @@ public class SignUp2nd extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), SignUp3rd.class);
 
         //Pass all fields to the next activity
+        intent.putExtra("idnum", _idnum);
         intent.putExtra("fullname", _fullname);
         intent.putExtra("email", _email);
-        intent.putExtra("username", _username);
         intent.putExtra("password", _password);
         intent.putExtra("date", _date);
         intent.putExtra("gender", _gender);

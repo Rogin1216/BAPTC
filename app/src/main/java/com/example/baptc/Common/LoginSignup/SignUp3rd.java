@@ -40,9 +40,9 @@ public class SignUp3rd extends AppCompatActivity {
         }
 
         //Get all values passed from previous screens
+        String _idnum = getIntent().getStringExtra("idnum");
         String _fullname = getIntent().getStringExtra("fullname");
         String _email = getIntent().getStringExtra("email");
-        String _username = getIntent().getStringExtra("username");
         String _password = getIntent().getStringExtra("password");
         String _date = getIntent().getStringExtra("date");
         String _gender = getIntent().getStringExtra("gender");
@@ -54,9 +54,9 @@ public class SignUp3rd extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), VerifyOTP.class);
 
         //Pass all fields to the next activity
+        intent.putExtra("idnum", _idnum);
         intent.putExtra("fullname", _fullname);
         intent.putExtra("email", _email);
-        intent.putExtra("username", _username);
         intent.putExtra("password", _password);
         intent.putExtra("date", _date);
         intent.putExtra("gender", _gender);

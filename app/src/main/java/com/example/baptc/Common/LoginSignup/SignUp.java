@@ -23,7 +23,7 @@ public class SignUp extends AppCompatActivity {
     TextView titleText, slideText;
 
     //Get Data Variables
-    TextInputLayout fullname, username, email, password;
+    TextInputLayout idnum, lastname, firstname, email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,9 @@ public class SignUp extends AppCompatActivity {
         slideText = findViewById(R.id.signup_slide_text);
 
         //Hooks for getting data
-        fullname = findViewById(R.id.signup_fullname);
-        username = findViewById(R.id.signup_username);
+        idnum = findViewById(R.id.signup_id);
+        lastname = findViewById(R.id.signup_lastname);
+        firstname = findViewById(R.id.signup_firstname);
         email = findViewById(R.id.signup_email);
         password = findViewById(R.id.signup_password);
 
@@ -48,21 +49,23 @@ public class SignUp extends AppCompatActivity {
 
     public void callNextSignupScreen(View view) {
 
-        if (!validateFullName() | !validateUsername() | !validateEmail() | !validatePassword()) {
+        if (!validateLastName() | !validateFirstName() | !validateIDnum() | !validateEmail() | !validatePassword()) {
             return;
         }
         //Get all values
-        String _fullname = fullname.getEditText().getText().toString().trim();
+        String _idnum = idnum.getEditText().getText().toString().trim();
+        String _lastname = lastname.getEditText().getText().toString().trim();
+        String _firstname = firstname.getEditText().getText().toString().trim();
+        String _fullname = (_firstname + " " + _lastname);
         String _email = email.getEditText().getText().toString().trim();
-        String _username = username.getEditText().getText().toString().trim();
         String _password = password.getEditText().getText().toString().trim();
 
         Intent intent = new Intent(getApplicationContext(), SignUp2nd.class);
 
         //Pass all fields to the next activity
+        intent.putExtra("idnum", _idnum);
         intent.putExtra("fullname", _fullname);
         intent.putExtra("email", _email);
-        intent.putExtra("username", _username);
         intent.putExtra("password", _password);
 
         //Add Shared Animation
@@ -84,34 +87,26 @@ public class SignUp extends AppCompatActivity {
     }
 
     //Validation
-    private boolean validateFullName() {
-        String val = fullname.getEditText().getText().toString().trim();
+    private boolean validateLastName() {
+        String val = lastname.getEditText().getText().toString().trim();
         if (val.isEmpty()) {
-            fullname.setError("Field can not be empty");
+            lastname.setError("Field can not be empty");
             return false;
         } else {
-            fullname.setError(null);
-            fullname.setErrorEnabled(false);
+            lastname.setError(null);
+            lastname.setErrorEnabled(false);
             return true;
         }
     }
 
-    private boolean validateUsername() {
-        String val = username.getEditText().getText().toString().trim();
-        String checkspaces = "\\A\\w{1,20}\\z";
-
+    private boolean validateFirstName() {
+        String val = firstname.getEditText().getText().toString().trim();
         if (val.isEmpty()) {
-            username.setError("Field can not be empty");
-            return false;
-        } else if (val.length() > 18) {
-            username.setError("Username is too long!");
-            return false;
-        } else if (!val.matches(checkspaces)) {
-            username.setError("No White spaces are allowed!");
+            firstname.setError("Field can not be empty");
             return false;
         } else {
-            username.setError(null);
-            username.setErrorEnabled(false);
+            firstname.setError(null);
+            firstname.setErrorEnabled(false);
             return true;
         }
     }
@@ -126,8 +121,8 @@ public class SignUp extends AppCompatActivity {
             idnum.setError("Invalid format!");
             return false;
         } else {
-            username.setError(null);
-            username.setErrorEnabled(false);
+            idnum.setError(null);
+            idnum.setErrorEnabled(false);
             return true;
         }
     }

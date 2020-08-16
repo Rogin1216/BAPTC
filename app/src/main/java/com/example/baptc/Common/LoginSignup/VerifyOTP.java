@@ -31,7 +31,7 @@ public class VerifyOTP extends AppCompatActivity {
     PinView pinFromUser;
     String codeBySystem;
 
-    String fullname, phoneNo, email, username, password, date, gender, whatToDo;
+    String fullname, idnum, phoneNo, email, password, date, gender, whatToDo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +43,10 @@ public class VerifyOTP extends AppCompatActivity {
         pinFromUser = findViewById(R.id.pin_view);
 
         //Get all data from intent
+        idnum = getIntent().getStringExtra("idnum");
         fullname = getIntent().getStringExtra("fullname");
         phoneNo = getIntent().getStringExtra("phoneNo");
         email = getIntent().getStringExtra("email");
-        username = getIntent().getStringExtra("username");
         password = getIntent().getStringExtra("password");
         date = getIntent().getStringExtra("date");
         gender = getIntent().getStringExtra("gender");
@@ -132,7 +132,7 @@ public class VerifyOTP extends AppCompatActivity {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
 
-        UserHelperClass addNewUser = new UserHelperClass(fullname, username, email, phoneNo, password, date, gender);
+        UserHelperClass addNewUser = new UserHelperClass(idnum, fullname, email, phoneNo, password, date, gender);
         reference.child(phoneNo).setValue(addNewUser);
 
     }
