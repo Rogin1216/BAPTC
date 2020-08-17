@@ -8,12 +8,18 @@ import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.baptc.R;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class SignUp extends AppCompatActivity {
 
@@ -22,8 +28,17 @@ public class SignUp extends AppCompatActivity {
     Button next, login;
     TextView titleText, slideText;
 
+
     //Get Data Variables
     TextInputLayout idnum, lastname, firstname, email, password;
+    Spinner province,municipality;
+
+    //Array adapter
+    ArrayList<String> arrayList_parent;
+    ArrayAdapter<String> arrayAdapter_parent;
+
+    ArrayList<String> arrayList_abra, arrayList_apayao, arrayList_benguet,arrayList_ifugao;
+    ArrayAdapter<String> arrayAdapter_child;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +59,74 @@ public class SignUp extends AppCompatActivity {
         firstname = findViewById(R.id.signup_firstname);
         email = findViewById(R.id.signup_email);
         password = findViewById(R.id.signup_password);
+        province = findViewById(R.id.signup_province);
+        municipality = findViewById(R.id.signup_municipality);
+
+        //Array parent option
+        arrayList_parent=new ArrayList<>();
+        arrayList_parent.add("Abra");
+        arrayList_parent.add("Apayao");
+        arrayList_parent.add("Benguet");
+        arrayList_parent.add("Ifugao");
+
+        arrayAdapter_parent=new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item,arrayList_parent);
+
+        province.setAdapter(arrayAdapter_parent);
+
+        //child spinner dependent starts here
+        arrayList_abra=new ArrayList<>();
+        arrayList_abra.add("Bangued");
+        arrayList_abra.add("Boliney");
+        arrayList_abra.add("Bucay");
+        arrayList_abra.add("Bucloc");
+        arrayList_abra.add("Daguioman");
+
+        arrayList_apayao=new ArrayList<>();
+        arrayList_apayao.add("Calanasan");
+        arrayList_apayao.add("Conner");
+        arrayList_apayao.add("Flora");
+        arrayList_apayao.add("Kabugao");
+        arrayList_apayao.add("Luna");
+
+        arrayList_benguet=new ArrayList<>();
+        arrayList_benguet.add("Atok");
+        arrayList_benguet.add("Bakun");
+        arrayList_benguet.add("Bokod");
+        arrayList_benguet.add("Buguias");
+        arrayList_benguet.add("Itogon");
+
+        arrayList_ifugao=new ArrayList<>();
+        arrayList_ifugao.add("Aguinalod");
+        arrayList_ifugao.add("Alofonso Lista");
+        arrayList_ifugao.add("Asipulo");
+        arrayList_ifugao.add("Banaue");
+        arrayList_ifugao.add("Hingyon");
+
+        province.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i==0){
+                    arrayAdapter_child=new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item,arrayList_abra);
+                }
+                if(i==1){
+                    arrayAdapter_child=new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item,arrayList_apayao);
+                }
+                if(i==2){
+                    arrayAdapter_child=new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item,arrayList_benguet);
+                }
+                if(i==3){
+                    arrayAdapter_child=new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_spinner_item,arrayList_ifugao);
+                }
+
+                municipality.setAdapter(arrayAdapter_child);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        //Spinner dependent end
 
     }
 

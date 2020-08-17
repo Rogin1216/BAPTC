@@ -21,7 +21,7 @@
         <activity android:name=".Common.LoginSignup.SignUp2nd" />
         <activity android:name=".Common.LoginSignup.SignUp" />
         <activity android:name=".Common.LoginSignup.Login" />
-        <activity android:name=".Common.LoginSignup.StartUpScreen" />
+        <!--<activity android:name=".Common.LoginSignup.StartUpScreen" /> -->
 <!--        <activity android:name=".Common.SplashScreen">-->
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
@@ -30,7 +30,7 @@
 <!--            </intent-filter>-->
 <!--        </activity>-->
 
-        <activity android:name=".Sample">
+        <activity android:name=".Common.LoginSignup.StartUpScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
