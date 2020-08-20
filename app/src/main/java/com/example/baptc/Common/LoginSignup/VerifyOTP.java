@@ -31,7 +31,7 @@ public class VerifyOTP extends AppCompatActivity {
     PinView pinFromUser;
     String codeBySystem;
 
-    String fullname, idnum, phoneNo, email, password, date, gender, whatToDo;
+    String fullname, address, idnum, phoneNo, email, password, date, gender, whatToDo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,7 @@ public class VerifyOTP extends AppCompatActivity {
         date = getIntent().getStringExtra("date");
         gender = getIntent().getStringExtra("gender");
         whatToDo = getIntent().getStringExtra("whatToDo");
+        address = getIntent().getStringExtra("address");
 
         sendVerificationCodeToUser(phoneNo);
     }
@@ -132,7 +133,7 @@ public class VerifyOTP extends AppCompatActivity {
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference("Users");
 
-        UserHelperClass addNewUser = new UserHelperClass(idnum, fullname, email, phoneNo, password, date, gender);
+        UserHelperClass addNewUser = new UserHelperClass(idnum, address, fullname, email, phoneNo, password, date, gender);
         reference.child(phoneNo).setValue(addNewUser);
 
     }

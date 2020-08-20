@@ -59,7 +59,6 @@ public class MenuViewModel extends ViewModel implements ICategoryCallBackListene
         });
     }
 
-
     public MutableLiveData<String> getMessageError() {
         return messageError;
     }

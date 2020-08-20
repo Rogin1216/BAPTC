@@ -2,18 +2,27 @@ package com.example.baptc.Databases;
 
 public class UserHelperClass {
 
-    String idnum, fullname, email, phoneNo, password, date, gender;
+    String idnum, address, fullname, email, phoneNo, password, date, gender;
 
     public UserHelperClass(){}
 
-    public UserHelperClass(String idnum, String fullname, String email, String phoneNo, String password, String date, String gender) {
+    public UserHelperClass(String idnum, String address, String fullname, String email, String phoneNo, String password, String date, String gender) {
         this.idnum = idnum;
+        this.address = address;
         this.fullname = fullname;
         this.email = email;
         this.phoneNo = phoneNo;
         this.password = password;
         this.date = date;
         this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getFullname() {
