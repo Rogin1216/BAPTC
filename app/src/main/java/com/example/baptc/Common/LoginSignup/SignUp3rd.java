@@ -46,6 +46,7 @@ public class SignUp3rd extends AppCompatActivity {
         String _password = getIntent().getStringExtra("password");
         String _date = getIntent().getStringExtra("date");
         String _gender = getIntent().getStringExtra("gender");
+        String _address = getIntent().getStringExtra("address");
 
         //Get Number
         String _getUserEnteredPhoneNumber = phoneNumber.getEditText().getText().toString().trim();
@@ -54,6 +55,7 @@ public class SignUp3rd extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), VerifyOTP.class);
 
         //Pass all fields to the next activity
+        intent.putExtra("address", _address);
         intent.putExtra("idnum", _idnum);
         intent.putExtra("fullname", _fullname);
         intent.putExtra("email", _email);

@@ -3,18 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group>
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_person_24"
             android:title="@string/menu_home" />
+    </group>
+
+    <group>
         <item
             android:id="@+id/nav_menu"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/crop"
             android:title="@string/menu_menu" />
+    </group>
+
+    <group>
         <item
-            android:id="@+id/nav_crop_list"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_crop_list" />
+            android:id="@+id/nav_sign_out"
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:title="@string/menu_signout" />
     </group>
 </menu>

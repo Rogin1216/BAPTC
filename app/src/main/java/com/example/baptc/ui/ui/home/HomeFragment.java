@@ -40,18 +40,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class HomeFragment extends Fragment {
 
     public static final String TAG = "TAG";
-    TextInputLayout profile_email, profile_phonenum;
-    MaterialTextView profile_date, profile_idnum, profile_fullname;
-    TextView header_fullname, header_idnum, crop_counter;
+    TextView header_fullname, profile_date, profile_idnum, profile_fullname, profile_email, profile_phonenum, profile_address;
     CircleImageView profile_image;
     Uri imageUri;
 
-    String user_idnum, user_fname, user_email, user_date, user_phoneNo, _PhoneNum;
+    String user_idnum, user_fname, user_email, user_date, user_phoneNo, _PhoneNum, user_add;
     FirebaseStorage storage;
     StorageReference storageReference;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
-    Button OUT, UPDATE;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -76,16 +73,15 @@ public class HomeFragment extends Fragment {
         });
 
         //Hooks
-        UPDATE = view.findViewById(R.id.UPDATE);
-        OUT = view.findViewById(R.id.OUT);
         profile_date = view.findViewById(R.id.profile_date);
         profile_fullname = view.findViewById(R.id.profile_fullname);
         profile_email = view.findViewById(R.id.profile_email);
         profile_phonenum = view.findViewById(R.id.profile_phonenum);
+        profile_address = view.findViewById(R.id.profile_add);
         header_fullname = view.findViewById(R.id.header_fullname);
-        header_idnum = view.findViewById(R.id.header_idnum);
+//        header_idnum = view.findViewById(R.id.header_idnum);
         profile_idnum = view.findViewById(R.id.profile_idnum);
-        crop_counter = view.findViewById(R.id.crop_counter);
+//        crop_counter = view.findViewById(R.id.crop_counter);
         profile_image = view.findViewById(R.id.profile_image);
 
         //Show Data
@@ -120,49 +116,49 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        OUT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity().getApplicationContext(), Login.class));
-                getActivity().finish();
-            }
-        });
+//        OUT.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity().getApplicationContext(), Login.class));
+//                getActivity().finish();
+//            }
+//        });
 
-        UPDATE.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isPhoneNOChanged() || isEmailChanged()) {
-                    Toast.makeText(getActivity(), "Data has been updated", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(getActivity(), "Data is the same can't update", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        UPDATE.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (isPhoneNOChanged() || isEmailChanged()) {
+//                    Toast.makeText(getActivity(), "Data has been updated", Toast.LENGTH_SHORT).show();
+//
+//                } else {
+//                    Toast.makeText(getActivity(), "Data is the same can't update", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
         return view;
 
     }
 
-    private boolean isPhoneNOChanged() {
-        if (!user_phoneNo.equals(profile_phonenum.getEditText().getText().toString())) {
-            databaseReference.child(_PhoneNum).child("fullname").setValue(profile_phonenum.getEditText().getText().toString());
-            user_phoneNo = profile_phonenum.getEditText().getText().toString();
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean isEmailChanged() {
-        if (!user_email.equals(profile_email.getEditText().getText().toString())) {
-            databaseReference.child(_PhoneNum).child("email").setValue(profile_email.getEditText().getText().toString());
-            user_email = profile_email.getEditText().getText().toString();
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    private boolean isPhoneNOChanged() {
+//        if (!user_phoneNo.equals(profile_phonenum.getEditText().getText().toString())) {
+//            databaseReference.child(_PhoneNum).child("fullname").setValue(profile_phonenum.getEditText().getText().toString());
+//            user_phoneNo = profile_phonenum.getEditText().getText().toString();
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+//
+//    private boolean isEmailChanged() {
+//        if (!user_email.equals(profile_email.getEditText().getText().toString())) {
+//            databaseReference.child(_PhoneNum).child("email").setValue(profile_email.getEditText().getText().toString());
+//            user_email = profile_email.getEditText().getText().toString();
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     private void showAllData() {
         Intent intent = getActivity().getIntent();
@@ -171,14 +167,15 @@ public class HomeFragment extends Fragment {
         user_email = intent.getStringExtra("email");
         user_date = intent.getStringExtra("date");
         user_phoneNo = intent.getStringExtra("phoneNo");
+        user_add = intent.getStringExtra("address");
 
         header_fullname.setText(user_fname);
-        header_idnum.setText(user_idnum);
         profile_idnum.setText(user_idnum);
         profile_fullname.setText(user_fname);
-        profile_email.getEditText().setText(user_email);
+        profile_email.setText(user_email);
         profile_date.setText(user_date);
-        profile_phonenum.getEditText().setText(user_phoneNo);
+        profile_phonenum.setText(user_phoneNo);
+        profile_address.setText(user_add);
 
     }
 

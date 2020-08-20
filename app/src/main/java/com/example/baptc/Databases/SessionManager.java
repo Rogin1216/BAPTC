@@ -19,6 +19,7 @@ public class SessionManager {
     //User Session Variable
     private static final String IS_LOGIN = "IsLoggedIn";
     public static final String KEY_FULLNAME = "fullname";
+    public static final String KEY_ADDRESS = "address";
     public static final String KEY_IDNUM = "idnum";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PASSWORD = "password";
@@ -40,12 +41,13 @@ public class SessionManager {
 
     //Users Login Session
 
-    public void createLoginSession(String fullname, String idnum, String email, String phoneNo, String password, String date, String gender) {
+    public void createLoginSession(String address, String fullname, String idnum, String email, String phoneNo, String password, String date, String gender) {
         editor.putBoolean(IS_LOGIN, true);
 
         editor.putString(KEY_FULLNAME, fullname);
         editor.putString(KEY_IDNUM, idnum);
         editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_ADDRESS, address);
         editor.putString(KEY_PHONENO, phoneNo);
         editor.putString(KEY_PASSWORD, password);
         editor.putString(KEY_DATE, date);
@@ -60,6 +62,7 @@ public class SessionManager {
         userData.put(KEY_FULLNAME, userSession.getString(KEY_FULLNAME, null));
         userData.put(KEY_IDNUM, userSession.getString(KEY_IDNUM, null));
         userData.put(KEY_PASSWORD, userSession.getString(KEY_PASSWORD, null));
+        userData.put(KEY_ADDRESS, userSession.getString(KEY_ADDRESS, null));
         userData.put(KEY_PHONENO, userSession.getString(KEY_PHONENO, null));
         userData.put(KEY_DATE, userSession.getString(KEY_DATE, null));
         userData.put(KEY_GENDER, userSession.getString(KEY_GENDER, null));

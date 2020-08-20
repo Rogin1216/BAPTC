@@ -18,5 +18,6 @@
     <string name="menu_menu">Categories</string>
     <string name="menu_crop_list">Crop Lists</string>
     <string name="menu_crop_detail">Crop Details</string>
+    <string name="menu_signout">Sign out</string>
 
 </resources>

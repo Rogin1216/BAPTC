@@ -142,10 +142,14 @@ public class SignUp extends AppCompatActivity {
         String _fullname = (_firstname + " " + _lastname);
         String _email = email.getEditText().getText().toString().trim();
         String _password = password.getEditText().getText().toString().trim();
+        String _province = province.getSelectedItem().toString().trim();
+        String _municipality = municipality.getSelectedItem().toString().trim();
+        String _address = (_province + " " + _municipality);
 
         Intent intent = new Intent(getApplicationContext(), SignUp2nd.class);
 
         //Pass all fields to the next activity
+        intent.putExtra("address", _address);
         intent.putExtra("idnum", _idnum);
         intent.putExtra("fullname", _fullname);
         intent.putExtra("email", _email);

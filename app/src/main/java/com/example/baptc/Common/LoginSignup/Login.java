@@ -114,6 +114,7 @@ public class Login extends AppCompatActivity {
                         String _dateOfBirth = dataSnapshot.child(_completePhoneNo).child("date").getValue(String.class);
                         String _password = dataSnapshot.child(_completePhoneNo).child("password").getValue(String.class);
                         String _gender = dataSnapshot.child(_completePhoneNo).child("gender").getValue(String.class);
+                        String _address = dataSnapshot.child(_completePhoneNo).child("address").getValue(String.class);
 
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         intent.putExtra("fullname", _fullname);
@@ -121,10 +122,11 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("idnum", _idnum);
                         intent.putExtra("date", _dateOfBirth);
                         intent.putExtra("phoneNo", _phoneNo);
+                        intent.putExtra("address", _address);
 
                         //Create Session
                         SessionManager sessionManager = new SessionManager(Login.this, SessionManager.SESSION_USERSESSION);
-                        sessionManager.createLoginSession(_fullname, _email, _phoneNo, _dateOfBirth, _password, _gender, _idnum);
+                        sessionManager.createLoginSession(_address, _fullname, _email, _phoneNo, _dateOfBirth, _password, _gender, _idnum);
 
                         startActivity(intent);
 
