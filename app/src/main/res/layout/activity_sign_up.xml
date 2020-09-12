@@ -182,16 +182,57 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Province: "
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    ></TextView>
                 <Spinner
                     android:id="@+id/signup_province"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="50dp"
                     >
                 </Spinner>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Municipality : "
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    ></TextView>
                 <Spinner
                     android:id="@+id/signup_municipality"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="25dp"
+                    >
+                </Spinner>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Barangay : "
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    ></TextView>
+                <Spinner
+                    android:id="@+id/signup_barangay"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="42dp"
                     >
                 </Spinner>
             </LinearLayout>
